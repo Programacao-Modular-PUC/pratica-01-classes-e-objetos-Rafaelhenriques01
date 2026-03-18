@@ -12,7 +12,7 @@ public class JavaApplication1{
 
     double h;
     double c1;
-    double c2;
+    double c2; 
 
     double calculaHipotenusa(){
         h = Math.sqrt(Math.pow(c1,2) + Math.pow(c2,2));
