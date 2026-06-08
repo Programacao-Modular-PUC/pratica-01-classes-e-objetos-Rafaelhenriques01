@@ -12,86 +12,54 @@ public class JavaApplication1 {
 
         Scanner sc = new Scanner(System.in);
 
-        Pessoa[] pessoas = new Pessoa[10];
+        // EXERCÍCIO 1
 
-        int quantidade = 0;
+        System.out.println("EXERCICIO 1");
 
-        for (int i = 0; i < 10; i++) {
+        System.out.print("Digite o primeiro cateto: ");
+        double c1 = sc.nextDouble();
 
-            System.out.print("Nome: ");
-            String nome = sc.nextLine();
+        System.out.print("Digite o segundo cateto: ");
+        double c2 = sc.nextDouble();
 
-            System.out.print("Sobrenome: ");
-            String sobrenome = sc.nextLine();
+        TrianguloRetangulo triangulo = new TrianguloRetangulo(c1, c2);
 
-            System.out.print("Peso: ");
-            double peso = sc.nextDouble();
+        System.out.println("Hipotenusa = " + triangulo.calculaHipotenusa());
+        System.out.println("Area = " + triangulo.calculaArea());
 
-            System.out.print("Altura: ");
-            double altura = sc.nextDouble();
+        // EXERCÍCIO 2
 
-            sc.nextLine();
+        System.out.println("\nEXERCICIO 2");
 
-            System.out.print("Data de nascimento (dd/mm/aaaa): ");
-            String data = sc.nextLine();
+        sc.nextLine();
 
-            String[] partes = data.split("/");
+        System.out.print("Nome: ");
+        String nome = sc.nextLine();
 
-            int dia = Integer.parseInt(partes[0]);
-            int mes = Integer.parseInt(partes[1]);
-            int ano = Integer.parseInt(partes[2]);
+        System.out.print("Sobrenome: ");
+        String sobrenome = sc.nextLine();
 
-            Data nascimento = new Data(dia, mes, ano);
+        System.out.print("Idade: ");
+        int idade = sc.nextInt();
 
-            pessoas[i] = new Pessoa(
-                    nome,
-                    sobrenome,
-                    altura,
-                    peso,
-                    nascimento);
+        System.out.print("Altura: ");
+        double altura = sc.nextDouble();
 
-            quantidade++;
+        System.out.print("Peso: ");
+        double peso = sc.nextDouble();
 
-            if (i > 0) {
+        Pessoa pessoa = new Pessoa(
+                nome,
+                sobrenome,
+                idade,
+                altura,
+                peso,
+                0);
 
-                if (nome.equalsIgnoreCase(pessoas[i - 1].getNome())
-                        && sobrenome.equalsIgnoreCase(pessoas[i - 1].getSobrenome())) {
+        System.out.println("IMC = " + pessoa.calculaIMC());
 
-                    quantidade--;
-                    break;
-                }
-            }
-        }
-
-        System.out.println();
-
-        for (int i = 0; i < quantidade; i++) {
-
-            System.out.println("Cadastro " + (i + 1) + ":");
-            System.out.println("Nome completo: "
-                    + pessoas[i].getNome() + " "
-                    + pessoas[i].getSobrenome());
-
-            System.out.println("Nome de referência: "
-                    + pessoas[i].nomeReferencia());
-
-            System.out.println("Idade: "
-                    + pessoas[i].calculaIdade());
-
-            System.out.println("Peso: "
-                    + pessoas[i].getPeso());
-
-            System.out.println("Altura: "
-                    + pessoas[i].getAltura());
-
-            System.out.println("IMC: "
-                    + pessoas[i].calculaIMC());
-
-            System.out.println("Classificação: "
-                    + pessoas[i].informaObesidade());
-
-            System.out.println();
-        }
+        System.out.println("Classificacao = "
+                + pessoa.informaObesidade());
 
         sc.close();
     }

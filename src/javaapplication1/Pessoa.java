@@ -4,28 +4,24 @@
  */
 package javaapplication1;
 
-package javaapplication1;
-
-import java.util.Calendar;
-
 public class Pessoa {
 
     private String nome;
     private String sobrenome;
+    private int idade;
     private double altura;
     private double peso;
     private double imc;
-    private Data dataNascimento;
 
-    public Pessoa(String nome, String sobrenome,
-                  double altura, double peso,
-                  Data dataNascimento) {
+    public Pessoa(String nome, String sobrenome, int idade,
+            double altura, double peso, double imc) {
 
         this.nome = nome;
         this.sobrenome = sobrenome;
+        this.idade = idade;
         this.altura = altura;
         this.peso = peso;
-        this.dataNascimento = dataNascimento;
+        this.imc = imc;
     }
 
     public double calculaIMC() {
@@ -39,39 +35,14 @@ public class Pessoa {
 
         if (imc < 18.5)
             return "Magreza";
-
         else if (imc < 25)
             return "Normal";
-
         else if (imc < 30)
             return "Sobrepeso";
-
         else if (imc < 40)
             return "Obesidade";
-
         else
             return "Obesidade Grave";
-    }
-
-    public int calculaIdade() {
-
-        Calendar hoje = Calendar.getInstance();
-
-        int idade = hoje.get(Calendar.YEAR)
-                - dataNascimento.getAno();
-
-        if (hoje.get(Calendar.MONTH) + 1 < dataNascimento.getMes()
-                || (hoje.get(Calendar.MONTH) + 1 == dataNascimento.getMes()
-                && hoje.get(Calendar.DAY_OF_MONTH) < dataNascimento.getDia())) {
-
-            idade--;
-        }
-
-        return idade;
-    }
-
-    public String nomeReferencia() {
-        return sobrenome + ", " + nome.toUpperCase();
     }
 
     public String getNome() {
@@ -82,11 +53,43 @@ public class Pessoa {
         return sobrenome;
     }
 
+    public int getIdade() {
+        return idade;
+    }
+
     public double getAltura() {
         return altura;
     }
 
     public double getPeso() {
         return peso;
+    }
+
+    public double getImc() {
+        return imc;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setSobrenome(String sobrenome) {
+        this.sobrenome = sobrenome;
+    }
+
+    public void setIdade(int idade) {
+        this.idade = idade;
+    }
+
+    public void setAltura(double altura) {
+        this.altura = altura;
+    }
+
+    public void setPeso(double peso) {
+        this.peso = peso;
+    }
+
+    public void setImc(double imc) {
+        this.imc = imc;
     }
 }
